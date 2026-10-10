@@ -1,0 +1,9 @@
+.env
+references
+
+backend/tmp
+frontend/tmp
+
+frontend/node_modules
+frontend/dev-dist
+frontend/coverage

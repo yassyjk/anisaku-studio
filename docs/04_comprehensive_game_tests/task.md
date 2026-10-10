@@ -1,0 +1,5 @@
+-   [ ] `docs/04_comprehensive_game_tests/` ディレクトリ作成とドキュメント配置 <!-- id: 5 -->
+-   [ ] `feature/04_comprehensive_game_tests` ブランチの作成 <!-- id: 6 -->
+-   [ ] Backend: `websocket_test.go` にエラーケース、正常系フローを追加 <!-- id: 7 -->
+-   [ ] Frontend: `websocket.test.ts` に WebSocket/Polling 切り替えテストを追加 <!-- id: 8 -->
+-   [ ] 実装内容の確認と完了報告 <!-- id: 9 -->

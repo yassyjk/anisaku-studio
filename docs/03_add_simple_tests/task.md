@@ -1,0 +1,5 @@
+-   [x] Backend: `handlers/websocket_test.go` を作成する <!-- id: 0 -->
+-   [x] Backend: テストを実行して検証する (User will do manually) <!-- id: 1 -->
+-   [x] Frontend: `vitest` と `jsdom` をインストールする (User will do manually) <!-- id: 2 -->
+-   [x] Frontend: `src/websocket.test.ts` を作成する <!-- id: 3 -->
+-   [x] Frontend: テストを実行して検証する (User will do manually) <!-- id: 4 -->

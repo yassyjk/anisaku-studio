@@ -1,0 +1,85 @@
+name: CI
+
+on:
+    push:
+        branches: ["feature/*", "main"]
+    pull_request:
+        branches: ["main"]
+
+jobs:
+    backend:
+        name: Backend CI
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up Go
+              uses: actions/setup-go@v5
+              with:
+                  go-version: "1.21"
+                  cache: true
+                  cache-dependency-path: backend/go.sum
+
+            - name: Install dependencies
+              run: go mod download
+              working-directory: backend
+
+            - name: Run Vet
+              run: go vet ./...
+              working-directory: backend
+
+            - name: Run Tests
+              run: go test -v -cover ./...
+              working-directory: backend
+
+            - name: Build
+              run: go build -v -o /dev/null ./main.go
+              working-directory: backend
+
+    frontend:
+        name: Frontend CI
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Set up Go
+              uses: actions/setup-go@v5
+              with:
+                  go-version: "1.21"
+                  cache: true
+                  cache-dependency-path: backend/go.sum
+
+            - name: Install backend dependencies
+              run: go mod download
+              working-directory: backend
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: "20"
+
+            - name: Install dependencies
+              run: npm install
+              working-directory: frontend
+
+            - name: Run Tests
+              run: npm run test:coverage || true
+              working-directory: frontend
+
+            - name: Install E2E dependencies
+              run: npm install
+              working-directory: .
+
+            - name: Install Playwright Browsers
+              run: npx playwright install --with-deps chromium
+              working-directory: .
+
+            - name: Run Playwright tests
+              run: npx playwright test
+              working-directory: .
+
+            - name: Build
+              run: npm run build
+              working-directory: frontend

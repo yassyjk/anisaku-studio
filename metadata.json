@@ -1,0 +1,7 @@
+{
+  "name": "アニ作 (Anisaku)",
+  "description": "脚本・作画・声優・音楽を集めて作品を公開するカードゲーム",
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
